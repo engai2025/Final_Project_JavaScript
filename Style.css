@@ -1,0 +1,88 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: #f4f6fb;
+  color: #222;
+}
+ 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a237e;
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(26,35,126,0.10);
+  position: relative;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ff9800;
+  letter-spacing: 2px;
+  flex-shrink: 0;
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: static;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  flex-direction: row;
+}
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  position: static;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-link.active, .nav-link:hover {
+  color: #ff9800;
+}
+.nav-link.active::after, .nav-link:hover::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  height: 2px;
+  background: #ff9800;
+  border-radius: 2px;
+  margin-top: 2px;
+}
+#cartBtn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.10);
+  transition: background 0.2s, transform 0.2s;
+  display: block;
+  margin: 0;
+  width: auto;
+  font-size: 1rem;
+  border-radius: 20px;
+  order: unset;
+}
+#cartBtn:hover {
+  background: #ffa726;
+  transform: scale(1.05);
+}
+ 
