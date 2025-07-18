@@ -357,3 +357,14 @@ body {
   color: #3949ab;
   font-size: 1.05rem;
 }
+
+footer {
+  background: #1a237e;
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 -2px 12px rgba(26,35,126,0.10);
+}
