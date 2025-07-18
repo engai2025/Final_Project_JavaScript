@@ -26,6 +26,127 @@
       </div>
     </nav>
   </header>
+  <main>
+    <section id="home" class="page-section">
+      <div class="hero-content">
+        <h2>Discover the Latest in Electronics</h2>
+        <p>Shop top gadgets, smart devices, and more at unbeatable prices with Kulmis.</p>
+        <button id="shopNowBtn">Shop Now</button>
+      </div>
+      <div class="features-section">
+        <h3>Why Shop with Kulmis?</h3>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">🚚</span>
+            <h4>Fast Delivery</h4>
+            <p>Get your electronics delivered quickly and reliably, right to your door.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">💳</span>
+            <h4>Secure Payments</h4>
+            <p>Shop with confidence using our secure and trusted payment options.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🛡️</span>
+            <h4>Warranty & Support</h4>
+            <p>Enjoy peace of mind with warranty and 24/7 customer support on all products.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">⭐</span>
+            <h4>Top Brands</h4>
+            <p>We offer the latest and greatest from the world’s leading electronics brands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="page-section hidden">
+      <div class="about-content">
+        <h2>About Kulmis</h2>
+        <p><b>Kulmis</b> is a forward-thinking electronics company established in 2021, committed to delivering cutting-edge technology to individuals, businesses, and institutions across the region. Led by Abdirahmaan Ali Jama, Kulmis has grown into a trusted name in the Somali electronics market.</p>
+        <h3>We specialize in the sale of:</h3>
+        <ul class="about-products-list">
+          <li><b>Laptops</b> – from budget-friendly options to high-performance machines</li>
+          <li><b>Printers & Scanners</b> – for homes, offices, and large enterprises</li>
+          <li><b>Keyboards & Batteries</b> – essential accessories built for performance</li>
+          <li><b>Smartphones</b>  all brands and models to suit every lifestyle</li>
+          <li><b>Motherboards & Internal Components</b> – for repairs, upgrades, and custom builds</li>
+          <li><b>Networking Devices (TP-Link, etc.)</b> – to keep you connected with speed and reliability</li>
+        </ul>
+        <p>In addition to our wide product range, Kulmis offers reliable delivery services to ensure your items arrive safely and on time — right to your doorstep.</p>
+        <p>At Kulmis, we don’t just sell electronics — we connect people with the technology they need to grow, work, and thrive.</p>
+        <div class="about-extra">
+          <h3>Our Values</h3>
+          <ul class="values-list">
+            <li><b>Innovation:</b> We stay ahead by offering the newest tech and trends.</li>
+            <li><b>Integrity:</b> Honest service and transparent pricing, always.</li>
+            <li><b>Customer Focus:</b> Your satisfaction is our top priority.</li>
+            <li><b>Community:</b> We support and empower our local and global community.</li>
+          </ul>
+          <h3>Meet Our Team</h3>
+          <div class="team-grid">
+            <div class="team-member">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="CEO" />
+              <h4>Ahmed Ali</h4>
+              <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="CTO" />
+              <h4>Fatima Hassan</h4>
+              <p>Chief Technology Officer</p>
+            </div>
+            <div class="team-member">
+              <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Support Lead" />
+              <h4>Mohamed Noor</h4>
+              <p>Customer Support Lead</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="products" class="page-section hidden">
+      <div class="products-header">
+        <h2>Our Products</h2>
+        <input type="text" id="searchInput" placeholder="Search electronics...">
+      </div>
+      <div id="productsGrid"></div>
+    </section>
+    <section id="contact" class="page-section hidden">
+      <div class="contact-content">
+        <h2>Contact Kulmis</h2>
+        <form id="contactForm">
+          <input type="text" id="contactName" placeholder="Your Name" required>
+          <input type="email" id="contactEmail" placeholder="Your Email" required>
+          <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <div id="contactInfo">
+          <p>Email: support@kulmis.com</p>
+          <p>Phone: +1 234 567 8901</p>
+          <p>Address: 123 Kulmis Ave, Tech City, World</p>
+        </div>
+      </div>
+    </section>
+    <aside id="cartModal" class="modal hidden">
+      <div class="modal-content">
+        <span id="closeCart" class="close">&times;</span>
+        <h2>Your Cart</h2>
+        <ul id="cartItems"></ul>
+        <div id="cartTotal"></div>
+        <button id="checkoutBtn">Checkout</button>
+      </div>
+    </aside>
+    <aside id="messageModal" class="modal hidden">
+      <div class="modal-content">
+        <span id="closeMessage" class="close">&times;</span>
+        <div id="messageContent"></div>
+      </div>
+    </aside>
+    <aside id="productModal" class="modal hidden">
+      <div class="modal-content" id="productModalContent"></div>
+    </aside>
+  </main>
+  
+  <script src="Main.js"></script>
  
 </body>
 </html>
