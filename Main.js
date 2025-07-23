@@ -74,3 +74,114 @@ const EXTRA_PRODUCTS = [
     description: 'Capture stunning aerial photos and videos with this lightweight, easy-to-fly drone from DJI.'
   },
 ];
+
+
+
+// Fetch products from API  
+async function fetchProducts() {
+  try {
+    const res = await fetch(API_URL);
+    let apiProducts = await res.json();
+    // Ensure no ID collision
+    apiProducts = apiProducts.map(p => ({ ...p, badge: undefined }));
+    products = [...EXTRA_PRODUCTS, ...apiProducts];
+    renderProducts(products);
+  } catch (err) {
+    products = [...EXTRA_PRODUCTS];
+    renderProducts(products);
+    showMessage('Failed to load products from API. Showing featured products only.');
+  }
+}
+
+// SPA Navigation (robust)
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.page-section');
+function showSection(page) {
+  sections.forEach(sec => sec.classList.add('hidden'));
+  const section = document.getElementById(page);
+  if (section) section.classList.remove('hidden');
+  navLinks.forEach(link => link.classList.remove('active'));
+  const navLink = document.querySelector(`.nav-link[data-page="${page}"]`);
+  if (navLink) navLink.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Close burger menu on navigation (mobile/tablet)
+  const navMenu = document.querySelector('.nav-menu');
+  if (navMenu) navMenu.classList.remove('open');
+}
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    showSection(link.getAttribute('data-page'));
+    if (link.getAttribute('data-page') === 'products') {
+      document.getElementById('searchInput').focus();
+    }
+  });
+});
+// Show Home by default
+showSection('home');
+
+// Shop Now button scrolls to Products page
+const shopNowBtn = document.getElementById('shopNowBtn');
+if (shopNowBtn) {
+  shopNowBtn.addEventListener('click', () => {
+    showSection('products');
+    document.getElementById('searchInput').focus();
+  });
+}
+
+// Burger menu toggle for mobile nav
+const burgerMenu = document.getElementById('burgerMenu');
+const navMenu = document.querySelector('.nav-menu');
+if (burgerMenu && navMenu) {
+  burgerMenu.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    burgerMenu.classList.toggle('open'); // Animate burger to X
+  });
+  navMenu.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      burgerMenu.classList.remove('open'); // Reset burger
+    });
+  });
+}
+
+// Responsive nav toggle for .toggle-button and .navbar.active
+const toggleButton = document.querySelector('.toggle-button');
+const navbar = document.querySelector('.navbar');
+if (toggleButton && navbar) {
+  toggleButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    navbar.classList.toggle('active');
+  });
+  navbar.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navbar.classList.remove('active');
+    });
+  });
+}
+
+// Product rendering (to #productsGrid)
+function renderProducts(productList) {
+  productsGrid.innerHTML = '';
+  if (productList.length === 0) {
+    productsGrid.innerHTML = '<p>No products found.</p>';
+    return;
+  }
+  productList.forEach(product => {
+    const div = document.createElement('div');
+    div.className = 'product';
+    div.innerHTML = `
+      ${product.badge ? `<span class=\"badge\">${product.badge}</span>` : ''}
+      <img src=\"${product.image}\" alt=\"${product.title}\">
+      <h3>${product.title}</h3>
+      <p>$${product.price.toFixed(2)}</p>
+      <div class=\"card-actions\">
+        <button data-id=\"${product.id}\" class=\"add-cart-btn\">Add to Cart</button>
+        <button data-id=\"${product.id}\" class=\"view-details-btn\">View Details</button>
+      </div>
+    `;
+    div.querySelector('.add-cart-btn').addEventListener('click', () => addToCart(product.id));
+    div.querySelector('.view-details-btn').addEventListener('click', () => showProductModal(product.id));
+    productsGrid.appendChild(div);
+  });
+}
